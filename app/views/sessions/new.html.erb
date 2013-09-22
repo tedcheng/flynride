@@ -1,0 +1,37 @@
+<form id="broadcast">
+	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+	
+  <label for="phoneno">Phone Number</label>
+	<input type="text" id="phoneno" name="phone_num">
+  <button id="broadcastButton" type="submit" class="btn btn-default">Send me confirmation code!</button>
+</form>
+
+<form id="confirm" action="<%= session_url %>" method="post" class="hidden">
+	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+	<input name="phone_num" type="hidden" id="confirm_phone_num">
+	
+  <label for="confirmCode">Confirmation Code</label>
+	<input type="text" id="confirmCode" name="confirmCode">
+  <button id="broadcastButton" type="submit" class="btn btn-default">Submit Confirmation Code</button>
+</form>
+
+
+<script>
+  $("#broadcast").on("submit", function (event) {
+      event.preventDefault();
+			$("#broadcastButton").html("Confirmation Code Sending...");
+			$("#broadcastButton").attr("disabled", "disabled");
+			$("#confirm_phone_num").val($("#phoneno").val());
+			$("#confirm").toggleClass("hidden");
+      var formData = $(this).serialize();
+      $.ajax({
+        url: "/sessions/broadcast",
+        type: "POST",
+        data: formData,
+        success: function () {
+          console.log("submited!!!");
+        }
+      });
+    }
+  );
+</script>

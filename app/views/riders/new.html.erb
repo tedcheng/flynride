@@ -1,12 +1,11 @@
 <% if @rider.id %>
 	<% action_url = rider_url(@rider)%>
-	<% method = "put"%>
 <% else %>
-	<% action_url = riders_url%>
-	<% method = "post"%>
+	<% action_url = riders_url %>
 <%end%>
 
 <% flight_no = @rider.flight.flight_no if @rider.flight %>
+<% flight_date = @rider.flight.flight_date if @rider.flight %>
 <% phone_no = current_user.phone_no if current_user %>
 
 
@@ -19,18 +18,21 @@
     <span>We don't store or share your data.</span>
   </div>
 
-  <form action="<%= action_url %>" method="<%= method %>" role="form">
+  <form action="<%= action_url %>" method="post" role="form">
     
 		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 		
+		
 		<% if @rider.user_id %>
+	  	<input type="hidden" name="_method" value="put" />
 			<input name="rider[user_id]" type="hidden" value="<%= @rider.user_id %>">
 		<% end %>
-				
-		<div class="form-group">
-      <label for="phoneno">Phone Number</label>
-      <input type="text" name="user[phone_no]" value="<%= phone_no %>" class="form-control" id="phoneno" placeholder="Phone Number">
+
+    <div class="form-group">
+      <label for="flightdate">Flight Date</label>
+      <input type="date" value="<%= flight_date %>" name="flight[date]" class="form-control" id="flightdate" placeholder="Enter Flight Date">
     </div>
+
 		
     <div class="form-group">
       <label for="flightno">Flight No.</label>
