@@ -47,6 +47,10 @@ GEM
     coffee-script-source (1.6.3)
     erubis (2.7.0)
     execjs (2.0.1)
+    extlib (0.9.16)
+    google_directions (0.1.5)
+      extlib (>= 0.9.15)
+      nokogiri (>= 1.4.1)
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
@@ -61,7 +65,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
+    mini_portile (0.5.1)
     multi_json (1.8.0)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     pg (0.16.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -119,6 +126,7 @@ PLATFORMS
 DEPENDENCIES
   anjlab-bootstrap-rails!
   coffee-rails (~> 3.2.1)
+  google_directions
   jquery-rails
   pg
   rails (= 3.2.12)
