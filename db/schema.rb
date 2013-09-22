@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130921234834) do
+ActiveRecord::Schema.define(:version => 20130922022252) do
 
   create_table "flights", :force => true do |t|
     t.string   "flight_no"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130921234834) do
     t.string   "phone_no"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "token"
   end
 
 end
