@@ -15,17 +15,12 @@ class SmsIncomingController < ApplicationController
   	@input_message = params[:Body] 
  	logger.debug "from: #{@input_number} message:#{@input_message}"
 
- 	@destination = ""
+ 	@from_user =User.find_by_phone_no(@input_number)
+
+ 	@pairing = Pairing.find_by_user1_id(@from_user.id) || Paring.find_by_user2_id(@from_user.id)
 
  	twiml = Twilio::TwiML::Response.new do |r|
-		
-		if (@input_number == "+12536938705")
-			@destination = "+13058144826" 
-    	else
-    		@destination = "+12536938705" 
-  		end
-
-    	r.Sms "#{@input_message}", :from => "+19782527433", :to => @destination
+    	r.Sms "#{@input_message}", :from => @pairing.phone_virtual, :to => @pairing
   	end
   	
   	logger.debug "#{twiml.text}"
@@ -33,7 +28,6 @@ class SmsIncomingController < ApplicationController
   	respond_to do |format|	
   		format.xml {render xml: twiml.text}
  	end 
-
 
 
   end

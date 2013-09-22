@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  user1_id: 1
+  user2_id: 1
+  phone_virtual: MyString
+
+two:
+  id: 1
+  user1_id: 1
+  user2_id: 1
+  phone_virtual: MyString

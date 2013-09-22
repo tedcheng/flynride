@@ -9,24 +9,18 @@ class GeoRankerController < ApplicationController
   end
 
   def rank_distances	
-  	test_data = [
-  		{:id => 1,:address=>'98052'},
-  		{:id => 2,:address=>'33186'},
-  		{:id => 3,:address=>'15213'},
- 		{:id => 4,:address=>'99999'},
-  	]
 
   	distances = Array.new
 
-  	test_data.each do |peer|
-  		computed_distance, status = compute_distance(peer[:address], "94110")
+  	Rider.find_all_by_flight_id(self.flight_id).map do |rider|
+      next if rider == self
+		computed_distance, status = compute_distance(peer[:final_dest], self[:final_dest])
 
   		if status != "NOT_FOUND"
-  			distances << {:id=>peer[:id], :distance=>computed_distance}
-  		end
+  			distances << {:id=>rider[:id], :distance=>computed_distance}
+  		end	      	
+    end
 
-  	end
-  	
   	return distances.sort_by {|a| a[:distance]}
   end
 end
