@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery :except => [:examine]
 
-  helper_method :session_exist?, :current_user
+  helper_method :session_exist?, :current_user, :current_rider
 
 
   def login(user)
