@@ -6,13 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+user = User.create( [
+	{phone_no:'+14159751399' , token: '12222' ,confirm_code: '123'},
+	{phone_no:'+16083386540' , token: '12223' ,confirm_code: '123'},
+	{phone_no:'+12536938705' , token: '12224' ,confirm_code: '123'},
+])
+
+flight = Flight.create([
+	{flight_no: "UK 1202", date: Date.new(2001,2,3)},
+	{flight_no: "EK 226", date: Date.new(2013,2,3)}
+])
+
 rider = Rider.create([
-	{final_dest: "98052", flight_id: "DL 188", id:1, user_id:1},
-	{final_dest: "15213", flight_id: "DL 188", id:2, user_id:2},
-	{final_dest: "15289", flight_id: "DL 188", id:3, user_id:3},
-	{final_dest: "33186", flight_id: "DL 188", id:4, user_id:4},
+	{user_id:1, flight_id:2, final_dest: "15213"},
+	{user_id:2, flight_id:2, final_dest: "33186"},
+	{user_id:3, flight_id:2, final_dest: "94110"},
+])
 
-	]	)
-
-
-
+pairing =Pairing.create([
+	{user1_id:1, user2_id:2, phone_virtual: "+19782527433"},
+	{user1_id:2, user2_id:1, phone_virtual: "+19782527433"}
+])

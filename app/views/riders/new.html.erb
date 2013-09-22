@@ -8,41 +8,50 @@
 <% flight_date = @rider.flight.flight_date if @rider.flight %>
 <% phone_no = current_user.phone_no if current_user %>
 
-
 <nav class="navbar navbar-default" role="navigation">
-  <h1>Fly'n'Ride</h1>
-</nav>
-<div class="container">
-  <div>
-    Tell us about your flight information and your final destination, and we will match you up with riders from your flight!
-    <span>We don't store or share your data.</span>
-  </div>
+      <div class="navbar-header">
+        <a class="navbar-brand" id="header-logo" href="#">Fly'n'Ride</a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 intro">
+            <h3>Enter your flight info here:</h3>
+            <p>Tell us about your flight information and where your are going. We will match you up with relevant fellow travelers on your flight.<br>
+        </div>
+      </div> <!-- End of Row -->
 
-  <form action="<%= action_url %>" method="post" role="form">
-    
-		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-		
-		
-		<% if @rider.user_id %>
-	  	<input type="hidden" name="_method" value="put" />
-			<input name="rider[user_id]" type="hidden" value="<%= @rider.user_id %>">
-		<% end %>
+      <div class="row">
+        <form action="<%= action_url %>" method="post" class="col-md-12" role="form">
 
-    <div class="form-group">
-      <label for="flightdate">Flight Date</label>
-      <input type="date" value="<%= flight_date %>" name="flight[date]" class="form-control" id="flightdate" placeholder="Enter Flight Date">
-    </div>
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          
+          <% if @rider.user_id %>
+            <input type="hidden" name="_method" value="put" />
+            <input name="rider[user_id]" type="hidden" value="<%= @rider.user_id %>">
+          <% end %>
+          
+          <div class="row">
+              <div class="col-sm-6 form-group">
+                <label for="flightno">Flight No.</label>
+                <input type="text" value="<%= flight_no %>" name="flight[flight_no]" class="form-control" id="flightno" placeholder="Enter Flight No." required>
+              </div>
+              
+              <div class="col-sm-6 form-group">
+                <label for="date">Date</label>
+                <input type="date" value="<%= flight_date %>" name="flight[date]" class="form-control" id="date" placeholder="Enter Flight Date" required>
 
-		
-    <div class="form-group">
-      <label for="flightno">Flight No.</label>
-      <input type="text" value="<%= flight_no %>" name="flight[flight_no]" class="form-control" id="flightno" placeholder="Enter Flight No.">
-    </div>
-    
-		<div class="form-group">
-      <label for="destination">Final Destination</label>
-      <input type="text" value="<%= @rider.final_dest %>" name="rider[final_dest]" class="form-control" id="destination" placeholder="Final Destination">
-    </div>
-    <button type="submit" class="btn btn-default">Find Other Riders!</button>
-  </form>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="destination">Final Destination</label>
+              <input type="text" value="<%= @rider.final_dest %>" name="rider[final_dest]" class="form-control" id="destination" placeholder="Final Destination" required>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn add-bottom">Find Other Riders</button>
+        </form>
+      </div> <!-- End of Row -->
+    </div> <!-- End of Container -->
 </div>

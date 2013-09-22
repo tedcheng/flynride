@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :id, :phone_no
+  attr_accessible :id, :phone_no, :token, :confirm_code
 
   has_many :riders
   

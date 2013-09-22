@@ -1,19 +1,43 @@
-<form id="broadcast">
-	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-	
-  <label for="phoneno">Phone Number</label>
-	<input type="text" id="phoneno" name="phone_num">
-  <button id="broadcastButton" type="submit" class="btn btn-default">Send me confirmation code!</button>
-</form>
+ <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" id="header-logo" href="#">Fly'n'Ride</a>
+      </div>
+    </nav>
 
-<form id="confirm" action="<%= session_url %>" method="post" class="hidden">
-	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-	<input name="phone_num" type="hidden" id="confirm_phone_num">
-	
-  <label for="confirmCode">Confirmation Code</label>
-	<input type="text" id="confirmCode" name="confirmCode">
-  <button id="broadcastButton" type="submit" class="btn btn-default">Submit Confirmation Code</button>
-</form>
+    <div class="container">
+      <div class="row">
+        <div class="intro col-sm-6">
+          <h3>Share a ride.<br>
+            Save money.<br>
+            Meet new people.
+          </h3>
+          <p class="leadtext">Easily and safely pair up with a fellow traveler on your flight to share a ride and discover new experiences.</p>
+        </div>
+        <div class="col-sm-6" id="homeform">
+          <form id="broadcast" role="form">
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  
+            <div class="form-group">
+              <label for="phoneno">Enter the phone number to start:</label>
+              <input type="text" class="form-control" id="phoneno" name="phone_num" placeholder="Phone Number" required>
+            </div>
+            <button id="broadcastButton" type="submit" class="btn">Send me the code</button>
+          </form>  
+
+          <form id="confirm" role="form" action="<%= session_url %>" method="post" class="hidden">
+             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <div class="form-group" id="verify-code">
+              <label for="phoneno">Enter the verification code:</label>
+              <input type="text" class="form-control" id="code" name="confirmCode" placeholder="And you're good to go!" required>
+            </div>
+            <input name="phone_num" type="hidden" id="confirm_phone_num">
+            <button id="broadcastButton" type="submit" class="btn add-bottom">Verify</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
 
 
 <script>

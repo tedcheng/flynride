@@ -1,35 +1,72 @@
 <nav class="navbar navbar-default" role="navigation">
-  <h1>Matches</h1>
-  <span>Account</span>
-</nav>
-<div class="container">
-  <div>
-    Matched riders are sorted by proximity of final destination. Start messaging now and save some cab money!
-    <span>Fees may apply based on cellphone carriers.</span>
-  </div>
-  <div>
-    <div class="panel panel-default">
-      <div class="panel-heading">Rider A</div>
-      <div class="panel-body">
-        <address>Abc St. &#038; Def St., City Name, ST 123456</address>
+      <div class="navbar-header">
+        <a class="navbar-brand" id="header-logo" href="#">Fly'n'Ride</a>
+        <a class="navbar-brand" href="#">Matches</a>
+        <a class="navbar-brand pull-right" href="#">Edit Account</a>
       </div>
-      <div class="panel-footer"><button class="btn btn-primary">Message!</button></div>
-    </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 intro">
+          <h3>We've found some matches for you!</h3>
+          <p>Matched riders are sorted by proximity of final destination. Start messaging now and save some cab money!<br>
+          <span class="small-text">* Fees may apply based on cellphone carriers.</span></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          
 
-    <div class="panel panel-default">
-      <div class="panel-heading">Rider B</div>
-      <div class="panel-body">
-        <address>Abc St. &#038; Def St., City Name, ST 123456</address>
-      </div>
-      <div class="panel-footer"><button class="btn btn-primary">Message!</button></div>
-    </div>
+        <% @rank_results.each_with_index do |result, idx| %>
+          <div class="col-sm-4">
+            <div class="panel panel-default">  
+            
+              <div class="panel-heading">Rider <%= (idx + 97).chr.capitalize %>: <%= result[:distance] %> miles</div>
+              <div class="panel-body">
+                <address><%= result[:final_dest] %></address>
+              </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">Rider C</div>
-      <div class="panel-body">
-        <address>Abc St. &#038; Def St., City Name, ST 123456</address>
-      </div>
-      <div class="panel-footer"><button class="btn btn-primary">Message!</button></div>
-    </div>
-  </div>
-</div>
+              <form class="pair">
+                  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  
+                  <input name="pairing[user1_id]" type="hidden" value="<%= current_user.id %>">
+                  <input name="pairing[user2_id]" type="hidden" value="<%= result[:id] %>">
+
+                  <button class="pairButton btn btn-small sendsms" data-loading-text="Contacted">SMS</button>
+              </form>
+              
+            </div>
+          </div>
+        <% end %>
+          
+              
+
+
+        </div> <!-- End of 12 Columns -->
+      </div> <!-- End of Row -->
+    </div> <!-- End of Container -->
+
+
+
+
+
+    <script>
+      $("form.pair").on("submit", function (event) {
+          event.preventDefault();
+          
+          $(event.target.lastElementChild).html("<span class='glyphicon glyphicon-ok'></span> Contacted");
+          $(event.target.lastElementChild).attr("disabled", "disabled");
+          var formData = $(this).serialize();
+          $.ajax({
+            url: "/pairings/create",
+            type: "POST",
+            data: formData,
+            success: function () {
+              console.log("submited!!!");
+            }
+          });
+        }
+      );
+    </script>
+
+

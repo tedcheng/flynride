@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
+  def current_rider 
+ 	current_user.riders.first
+  end
 
 end

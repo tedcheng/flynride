@@ -17,10 +17,12 @@ class SmsIncomingController < ApplicationController
 
  	@from_user =User.find_by_phone_no(@input_number)
 
- 	@pairing = Pairing.find_by_user1_id(@from_user.id) || Paring.find_by_user2_id(@from_user.id)
+ 	@pairing = Pairing.find_by_user1_id(@from_user.id)
+
+	@to_user = User.find_by_id(@pairing.user2_id)
 
  	twiml = Twilio::TwiML::Response.new do |r|
-    	r.Sms "#{@input_message}", :from => @pairing.phone_virtual, :to => @pairing
+    	r.Sms "#{@input_message}", :from => @pairing.phone_virtual, :to => @to_user.phone_no
   	end
   	
   	logger.debug "#{twiml.text}"
