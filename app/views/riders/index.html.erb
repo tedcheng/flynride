@@ -23,7 +23,7 @@
             
               <div class="panel-heading">Rider <%= (idx + 97).chr.capitalize %>: <%= result[:distance] %> miles</div>
               <div class="panel-body">
-                <address><%= result[:final_dest] %></address>
+                <address><%=link_to result[:final_dest],"https://www.google.com/local?q=#{result[:final_dest]}" %></address>
               </div>
 
               <form class="pair">
@@ -55,7 +55,7 @@
           event.preventDefault();
           
           $(event.target.lastElementChild).html("<span class='glyphicon glyphicon-ok'></span> Contacted");
-          $(event.target.lastElementChild).attr("disabled", "disabled");
+          $(event.target.lastElementChild)  .attr("disabled", "disabled");
           var formData = $(this).serialize();
           $.ajax({
             url: "/pairings/create",

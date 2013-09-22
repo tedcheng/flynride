@@ -9,7 +9,7 @@
 user = User.create( [
 	{phone_no:'+14159751399' , token: '12222' ,confirm_code: '123'},
 	{phone_no:'+16083386540' , token: '12223' ,confirm_code: '123'},
-	{phone_no:'+19782527433' , token: '12224' ,confirm_code: '123'},
+	{phone_no:'+13152100209' , token: '12224' ,confirm_code: '123'},
 ])
 
 flight = Flight.create([
