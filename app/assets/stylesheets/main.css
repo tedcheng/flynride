@@ -43,6 +43,10 @@ p {
 	font-weight: bold;
 }
 
+#view-match-link {
+	background: #1fb89c;
+}
+
 .navbar-default #header-logo:hover,
 .navbar-default #header-logo:focus {
 	background-color: #0EC9A7;
@@ -145,11 +149,22 @@ address {
 	margin-bottom: 0;
 }
 
+#ridermap {
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-bottom: 30px;
+}
+
+#ridermap img {
+	width: 100%;
+}
+
 .panel {
 	margin-bottom: 30px;
 	background-color: #ffffff;
 	border: 1px solid #ccc;
 	border-radius: 0px;
+	text-align: center;
 	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 	      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -171,14 +186,14 @@ address {
 		background-color: rgba(255,255,255,.9);
 		width: 70%;
 		margin-top: 7em;
+		padding:1.5em 2em;
 	}
 
 	#homeform {
-		margin-top: 6.5em;
+		margin-top: 4em;
 	}
 
 	.intro {
-		padding: 1em 2em;
 		display: table-cell;
 		vertical-align: middle;
 	}

@@ -1,8 +1,7 @@
 <nav class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
         <a class="navbar-brand" id="header-logo" href="#">Fly'n'Ride</a>
-        <a class="navbar-brand" href="#">Matches</a>
-        <a class="navbar-brand pull-right" href="#">Edit Account</a>
+        <a class="navbar-brand" href="#" id="view-match-link">View Matches</a>
       </div>
     </nav>
     <div class="container">
@@ -14,11 +13,12 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-sm-12" id="ridermap">
+          <img src="<%=generateMapUrl(@rank_results)%>">
+        </div>
+
         <div class="col-sm-12">
-
-        <img src="<%=generateMapUrl(@rank_results)%>"> 
           
-
         <% @rank_results.each_with_index do |result, idx| %>
           <div class="col-sm-4">
             <div class="panel panel-default">  
@@ -40,9 +40,6 @@
             </div>
           </div>
         <% end %>
-          
-              
-
 
         </div> <!-- End of 12 Columns -->
       </div> <!-- End of Row -->
