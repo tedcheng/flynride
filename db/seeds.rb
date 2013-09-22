@@ -10,20 +10,18 @@ user = User.create( [
 	{phone_no:'+14159751399' , token: '12222' ,confirm_code: '123'},
 	{phone_no:'+16083386540' , token: '12223' ,confirm_code: '123'},
 	{phone_no:'+13152100209' , token: '12224' ,confirm_code: '123'},
+	{phone_no:'+12536938705' , token: '12224' ,confirm_code: '123'},
+
 ])
 
 flight = Flight.create([
-	{flight_no: "UK 1202", date: Date.new(2001,2,3)},
-	{flight_no: "EK 226", date: Date.new(2013,2,3)}
+	{flight_no: "EK226", date: Date.new(2013,9,22)},
+	{flight_no: "EK225", date: Date.new(2013,9,22)}
 ])
 
 rider = Rider.create([
-	{user_id:1, flight_id:2, final_dest: "15213"},
-	{user_id:2, flight_id:2, final_dest: "33186"},
-	{user_id:3, flight_id:2, final_dest: "94110"},
-])
-
-pairing =Pairing.create([
-	{user1_id:1, user2_id:2, phone_virtual: "+19782527433"},
-	{user1_id:2, user2_id:1, phone_virtual: "+19782527433"}
+	{user_id:1, flight_id:2, final_dest: "255 King Street, San Francisco,CA"},
+	{user_id:2, flight_id:2, final_dest: "94110"},
+	{user_id:3, flight_id:2, final_dest: "94080"},
+	{user_id:4, flight_id:2, final_dest: "Potrero Avenue and Mariposa Street, San Francisco"}
 ])

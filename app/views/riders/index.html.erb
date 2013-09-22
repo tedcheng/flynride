@@ -23,7 +23,7 @@
           <div class="col-sm-4">
             <div class="panel panel-default">  
             
-              <div class="panel-heading">Rider <%= (idx + 97).chr.capitalize %>: <%= result[:distance] %> miles</div>
+              <div class="panel-heading"><%= (idx + 97).chr.capitalize %>: <%= result[:distance] %> miles from your destination</div>
               <div class="panel-body">
                 <address><%=link_to result[:final_dest],"https://www.google.com/local?q=#{result[:final_dest]}" %></address>
               </div>
