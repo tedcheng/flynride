@@ -1,0 +1,2 @@
+module GeoRankerHelper
+end

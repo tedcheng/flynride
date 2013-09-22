@@ -25,7 +25,6 @@ class SmsIncomingController < ApplicationController
     		@destination = "+12536938705" 
   		end
 
-
     	r.Sms "#{@input_message}", :from => "+19782527433", :to => @destination
   	end
   	
