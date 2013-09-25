@@ -1,8 +1,7 @@
 Emirates Hackathon Team Project Completed in 24 Hrs (2013.9.21-22)
 
 Demo:
-github.com/tedcheng/flynride 
-
+flynride.heroku.com/session/new
 (this may not be fully functional due to twilio free tier sms limitation)
 
 
