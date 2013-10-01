@@ -47,7 +47,7 @@ class RidersController < ApplicationController
     current_rider = Rider.find_by_id(params[:id])
     current_rider.update_attributes(params[:rider])
     
-    current_flight = Flight.find_by_flight_no(params[:flight][:flight_no]) || Flight.new(params[:flight])
+    current_flight = Flight.find_by_flight_no_and_date(params[:flight][:flight_no],params[:flight][:date]) || Flight.new(params[:flight])
     current_flight.save!
     
     current_rider.flight_id = current_flight.id

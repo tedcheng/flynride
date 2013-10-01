@@ -5,7 +5,7 @@
 <%end%>
 
 <% flight_no = @rider.flight.flight_no if @rider.flight %>
-<% flight_date = @rider.flight.flight_date if @rider.flight %>
+<% flight_date = @rider.flight.date if @rider.flight %>
 <% phone_no = current_user.phone_no if current_user %>
 
 <nav class="navbar navbar-default" role="navigation">
