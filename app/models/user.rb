@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   
   def set_token
     self.token = SecureRandom.urlsafe_base64
+     
   end
   
   def self.verify_credentials(phone_no, confirm_code)
